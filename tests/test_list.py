@@ -42,8 +42,6 @@ def test_pop_item(not_empty_list):
 def test_reverse(not_empty_list):
     new_not_empty_list = not_empty_list.copy()
     new_not_empty_list.reverse()
-    print(new_not_empty_list)
-    print(not_empty_list)
     assert new_not_empty_list != not_empty_list
     assert new_not_empty_list[-1] == not_empty_list[0]
     assert new_not_empty_list[-2] == not_empty_list[1]
