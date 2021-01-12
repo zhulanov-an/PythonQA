@@ -13,9 +13,16 @@ def not_empty_list():
 
 def test_add_item(empty_list):
     item = 1
+    next_item = 2
+
     empty_list.append(item)
     assert len(empty_list) == 1
+
+    empty_list.append(next_item)
+    assert len(empty_list) == 2
+
     assert empty_list[0] == item
+    assert empty_list[1] == next_item
 
 
 def test_extend_list_by_items(empty_list, not_empty_list):
