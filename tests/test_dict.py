@@ -11,18 +11,17 @@ def not_empty_dict():
     return {1: "123", 2: "456", 3: "789"}
 
 
-def test_update_dict(empty_dict):
-    pair = {4: "101112"}
-    next_pair = {5: "131415"}
+@pytest.mark.parametrize(
+    "key, value",
+    [(4, "101112"), (5, "131415")]
+)
+def test_update_dict(empty_dict, key, value):
+    new_dict = {key: value}
 
-    empty_dict.update(pair)
-    assert len(empty_dict) == 1
+    empty_dict.update(new_dict)
 
-    empty_dict.update(next_pair)
-    assert len(empty_dict) == 2
-
-    assert empty_dict[4] == "101112"
-    assert empty_dict[5] == "131415"
+    assert len(empty_dict) == len(new_dict)
+    assert empty_dict[key] == value
 
 
 def test_unique_key(not_empty_dict):
@@ -43,7 +42,6 @@ def test_pop_item(not_empty_dict):
 
 
 def test_del(not_empty_dict):
-    new_not_empty_dict = not_empty_dict.copy()
     assert 1 in not_empty_dict
     del not_empty_dict[1]
     assert 1 not in not_empty_dict
