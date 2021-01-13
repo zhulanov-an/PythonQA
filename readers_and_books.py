@@ -10,13 +10,20 @@ with open('./data/books.csv', newline='') as c:
 readers_and_books = list()
 
 for user in users:
-    reader = dict()
-    reader["name"] = user["name"]
-    reader["gender"] = user["gender"]
-    reader["address"] = user["address"]
+    reader = {
+        "name": user["name"],
+        "gender": user["gender"],
+        "address": user["address"]
+    }
 
     try:
-        reader["books"] = [next(books)]
+        book = next(books)
+        read_book = {
+            "title": book["Title"],
+            "author": book["Author"],
+            "height": book["Height"]
+        }
+        reader["books"] = [read_book]
     except StopIteration:
         reader["books"] = list()
 
