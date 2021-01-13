@@ -22,4 +22,6 @@ for user in users:
 
     readers_and_books.append(reader)
 
-print(readers_and_books)
+with open("example.json", "w") as f:
+    s = json.dumps(readers_and_books, indent=4)
+    f.write(s)
