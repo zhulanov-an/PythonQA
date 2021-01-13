@@ -25,11 +25,15 @@ def test_add_item(empty_list):
     assert empty_list[1] == next_item
 
 
-def test_extend_list_by_items(empty_list, not_empty_list):
-    empty_list.extend(not_empty_list)
-    assert empty_list == not_empty_list
-    for i in range(len(not_empty_list)):
-        assert not_empty_list[i] == empty_list[i]
+@pytest.mark.parametrize(
+    "new_list",
+    [[1, 2, 3], ["1", "2", "3"], [1, "2", 3]]
+)
+def test_extend_list_by_items(empty_list, new_list):
+    empty_list.extend(new_list)
+    assert empty_list == new_list
+    for i in range(len(new_list)):
+        assert new_list[i] == empty_list[i]
 
 
 def test_pop_item(not_empty_list):
