@@ -11,12 +11,12 @@ def not_empty_str():
     return "string"
 
 
-def test_empty_str_len(empty_str):
-    assert len(empty_str) == 0
-
-
-def test_not_empty_str_more_than_zero(not_empty_str):
-    assert len(not_empty_str) == 6
+@pytest.mark.parametrize(
+    "word, length",
+    [("", 0), ("a", 1), ("bc", 2)]
+)
+def test_str_len(word, length):
+    assert len(word) == length
 
 
 def test_starts_with_symbols(not_empty_str):
